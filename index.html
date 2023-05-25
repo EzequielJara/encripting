@@ -15,13 +15,13 @@
         <h1 class="mt-4">Encriptación de Datos</h1>
         <div class="mb-3">
             <label for="number" class="form-label">Ingrese un número de cuatro dígitos:</label>
-            <input type="number" id="number" min="1000" max="9999" class="form-control" oninput="validarNum(this)">
+            <input type="number" id="number" min="1000" max="9999" class="form-control" >
         </div>
         <button onclick="encriptar()" class="btn btn-outline-danger">Encriptar</button>
         <p id="encrypted-number" class=" alert-info"></p>
 
         <label for="encrypt-number2" class="form-label">Número encriptado:</label>
-        <input type="number" id="encrypt-number2"  class="form-control" />
+        <input type="number" min="1000" max="9999" id="encrypt-number2"  class="form-control" />
 
         <button onclick="desencriptar()" class="btn btn-outline-danger">Desencriptar</button>
 

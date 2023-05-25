@@ -1,14 +1,22 @@
 function encriptar() {
     var numberInput = document.getElementById("number");
-    var number = parseInt(numberInput.value);
-    if (number < 1000 || number > 9999) {
+    var number = numberInput.value.trim();
+
+    // Validar que el número tenga exactamente 4 caracteres numéricos
+    if (!/^\d{4}$/.test(number)) {
         showAlert("Ingrese un número de cuatro dígitos.");
         return;
     }
-    var primerDigito = Math.floor(number / 1000);
-    var segundoDigito = Math.floor((number / 100) % 10);
-    var tercerDigito = Math.floor((number / 10) % 10);
-    var cuartoDigito = number % 10;
+
+    // Verificar si el número contiene la letra "e" y eliminarla
+    if (number.includes("e")) {
+        number = number.replace(/e/gi, '');
+    }
+
+    var primerDigito = parseInt(number.charAt(0));
+    var segundoDigito = parseInt(number.charAt(1));
+    var tercerDigito = parseInt(number.charAt(2));
+    var cuartoDigito = parseInt(number.charAt(3));
 
     primerDigito = (primerDigito + 7) % 10;
     segundoDigito = (segundoDigito + 7) % 10;
@@ -47,15 +55,23 @@ function showAlert(message) {
 
 function desencriptar() {
     var encryptInput2 = document.getElementById("encrypt-number2");
-    var encryptNumber2 = parseInt(encryptInput2.value);
-    if (encryptNumber2 < 0 ||  encryptNumber2 > 9999) {
+    var encryptNumber2 = encryptInput2.value.trim();
+
+    // Validar que el número encriptado tenga exactamente 4 caracteres numéricos
+    if (!/^\d{4}$/.test(encryptNumber2)) {
         showAlert("Ingrese un número de cuatro dígitos.");
         return;
     }
-    var primerDigito = Math.floor(encryptNumber2 / 1000);
-    var segundoDigito = Math.floor((encryptNumber2 / 100) % 10);
-    var tercerDigito = Math.floor((encryptNumber2 / 10) % 10);
-    var cuartoDigito = encryptNumber2 % 10;
+
+    
+    if (encryptNumber2.includes("e")) {
+        encryptNumber2 = encryptNumber2.replace(/e/gi, '');
+    }
+
+    var primerDigito = parseInt(encryptNumber2.charAt(0));
+    var segundoDigito = parseInt(encryptNumber2.charAt(1));
+    var tercerDigito = parseInt(encryptNumber2.charAt(2));
+    var cuartoDigito = parseInt(encryptNumber2.charAt(3));
 
     intercambiar(primerDigito, tercerDigito);
     intercambiar(segundoDigito, cuartoDigito);
